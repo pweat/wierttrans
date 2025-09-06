@@ -1,0 +1,55 @@
+---
+// src/components/Footer.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-800 text-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4">Wierttrans</h3>
+        <p class="text-gray-400">
+          Profesjonalne odwierty i instalacje studni głębinowych.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Szybkie Linki</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/o-nas" class="text-gray-400 hover:text-white transition"
+              >O nas</a>
+          </li>
+          <li>
+            <a href="/oferta" class="text-gray-400 hover:text-white transition"
+              >Oferta</a>
+          </li>
+          <li>
+            <a href="/kontakt" class="text-gray-400 hover:text-white transition"
+              >Kontakt</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+        <p class="text-gray-400">
+          <a
+            href="mailto:wierttrans@gmail.com"
+            class="hover:text-white transition">wierttrans@gmail.com</a
+          >
+        </p>
+        <p class="text-gray-400 mt-2">
+          <a href="tel:+48737443243" class="hover:text-white transition"
+            >+48 737 443 243</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="bg-gray-900 py-4">
+    <div
+      class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500"
+    >
+      &copy; {currentYear} Wierttrans. Wszelkie prawa zastrzeżone.
+    </div>
+  </div>
+</footer>

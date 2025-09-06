@@ -1,0 +1,47 @@
+---
+// src/components/Header.astro
+---
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <nav
+    class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4"
+  >
+    <div class="flex items-center">
+      <a href="/">
+        <img
+          src="/images/wierttrans logo png.png"
+          alt="Logo Wierttrans"
+          class="h-10 w-auto"
+        />
+      </a>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-6">
+      <a
+        href="/"
+        class="text-gray-600 hover:text-red-600 transition duration-300"
+        >Strona Główna</a
+      >
+      <a
+        href="/o-nas"
+        class="text-gray-600 hover:text-red-600 transition duration-300"
+        >O nas</a
+      >
+      <a
+        href="/oferta"
+        class="text-gray-600 hover:text-red-600 transition duration-300"
+        >Oferta</a
+      >
+      <a
+        href="/kalkulator"
+        class="text-gray-600 hover:text-red-600 transition duration-300"
+        >Kalkulator</a
+      >
+      <a
+        href="/kontakt"
+        class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-300"
+        >Kontakt</a
+      >
+    </div>
+  </nav>
+</header>

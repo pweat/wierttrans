@@ -1,0 +1,88 @@
+---
+// src/pages/kontakt.astro
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Kontakt"
+  description="Skontaktuj się z firmą Wierttrans. Znajdziesz tu nasz adres, telefon, e-mail oraz formularz kontaktowy. Zapraszamy do współpracy."
+>
+  <h1 class="text-4xl font-bold text-gray-800 text-center mb-8">
+    Skontaktuj się z nami
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div class="space-y-4">
+      <h2 class="text-2xl font-semibold text-gray-700">Dane kontaktowe</h2>
+      <p class="text-lg text-gray-600">
+        Masz pytania lub chcesz umówić się na bezpłatną wycenę? Jesteśmy do
+        Twojej dyspozycji.
+      </p>
+      <div class="border-t pt-4">
+        <p class="font-bold">Telefon:</p>
+        <a href="tel:+48737443243" class="text-lg text-red-600 hover:underline"
+          >+48 737 443 243</a
+        >
+      </div>
+      <div>
+        <p class="font-bold">E-mail:</p>
+        <a
+          href="mailto:wierttrans@gmail.com"
+          class="text-lg text-red-600 hover:underline">wierttrans@gmail.com</a
+        >
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-semibold text-gray-700">Napisz do nas</h2>
+      <form
+        name="kontakt"
+        method="POST"
+        data-netlify="true"
+        class="mt-4 space-y-4"
+      >
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700"
+            >Imię i nazwisko</label
+          >
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Adres e-mail</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
+          />
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700"
+            >Wiadomość</label
+          >
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
+          ></textarea>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-300"
+          >
+            Wyślij Wiadomość
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</Layout>

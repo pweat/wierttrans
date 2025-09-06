@@ -1,0 +1,184 @@
+---
+// src/pages/kalkulator.astro
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Centrum Korzyści"
+  description="Oblicz swoje oszczędności, zobacz potencjalne korzyści i odkryj, jak wiele zyskasz dzięki własnej studni głębinowej."
+>
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">
+        Centrum Korzyści Własnej Studni
+      </h1>
+      <p class="text-lg text-gray-600 mb-8">
+        Wprowadź swoje obecne rachunki za wodę, aby odkryć potencjalne
+        oszczędności i korzyści płynące z niezależności.
+      </p>
+    </div>
+
+    <div
+      id="kalkulator"
+      class="bg-white p-6 rounded-lg shadow-lg border border-gray-200"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label for="cena-wody" class="block mb-2 font-semibold text-gray-700"
+            >Cena za 1 m³ wody (zł):</label
+          >
+          <input
+            type="number"
+            id="cena-wody"
+            class="w-full p-2 border border-gray-300 rounded"
+            placeholder="np. 12.50"
+          />
+        </div>
+        <div>
+          <label
+            for="zuzycie-wody"
+            class="block mb-2 font-semibold text-gray-700"
+            >Miesięczne zużycie (m³):</label
+          >
+          <input
+            type="number"
+            id="zuzycie-wody"
+            class="w-full p-2 border border-gray-300 rounded"
+            placeholder="np. 10"
+          />
+        </div>
+      </div>
+      <button
+        id="oblicz-btn"
+        class="w-full bg-red-600 text-white font-bold py-3 px-4 rounded hover:bg-red-700 transition duration-300"
+      >
+        Odkryj Korzyści
+      </button>
+    </div>
+
+    <div id="wynik-container" class="hidden mt-8 space-y-8">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">
+          Twoje Oszczędności
+        </h2>
+        <div class="text-center">
+          <p class="text-lg text-gray-700">Miesięcznie zaoszczędzisz około:</p>
+          <p id="wynik-miesiac" class="text-4xl font-bold text-green-600 my-2">
+            0 zł
+          </p>
+          <p class="text-lg text-gray-700 mt-4">Co rocznie daje kwotę:</p>
+          <p id="wynik-rok" class="text-4xl font-bold text-green-600 my-2">
+            0 zł
+          </p>
+          <p id="wynik-analogia" class="text-md text-gray-500 mt-2"></p>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">
+          Skala Zużycia Wody
+        </h2>
+        <div id="wynik-woda" class="text-center text-lg text-gray-700"></div>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">
+          To nie wszystko! Zyskujesz również:
+        </h2>
+        <ul class="space-y-3 text-lg">
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✅</span> Niezależność od ograniczeń
+            sieci wodociągowej.
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✅</span> Nieograniczone możliwości
+            podlewania ogrodu bez obaw o rachunki.
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✅</span> Wodę o stałym, wysokim ciśnieniu,
+            wolną od chloru.
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✅</span> Pewną inwestycję, która podnosi
+            wartość Twojej nieruchomości.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const KOSZT_STUDNI = 20000;
+
+  const cenaWodyInput = document.getElementById("cena-wody");
+  const zuzycieWodyInput = document.getElementById("zuzycie-wody");
+  const obliczBtn = document.getElementById("oblicz-btn");
+  const wynikContainer = document.getElementById("wynik-container");
+
+  const wynikMiesiacEl = document.getElementById("wynik-miesiac");
+  const wynikRokEl = document.getElementById("wynik-rok");
+  const wynikAnalogiaEl = document.getElementById("wynik-analogia");
+  const wynikWodaEl = document.getElementById("wynik-woda");
+
+  // --- NOWA FUNKCJA Z CIEKAWOSTKAMI ---
+  function getCiekawostkaWodna(roczneLitry) {
+    // 1 filiżanka kawy ≈ 140 litrów wody (cały proces produkcji)
+    const filizankiKawy = Math.round(roczneLitry / 140);
+    // 1 kg wołowiny ≈ 15 000 litrów wody
+    const kgWolowiny = (roczneLitry / 15000).toFixed(1);
+
+    if (roczneLitry <= 70000) {
+      // Mniej niż ~40m³ rocznie
+      return `Dla porównania, do wyprodukowania <strong>${filizankiKawy} filiżanek kawy</strong> ☕ potrzeba podobnej ilości wody!`;
+    } else {
+      return `Dla porównania, do wyprodukowania <strong>${kgWolowiny} kg wołowiny</strong> 🥩 potrzeba podobnej ilości wody!`;
+    }
+  }
+  // --- KONIEC NOWEJ FUNKCJI ---
+
+  obliczBtn.addEventListener("click", () => {
+    const cena = parseFloat(cenaWodyInput.value);
+    const zuzycie = parseFloat(zuzycieWodyInput.value);
+
+    if (isNaN(cena) || isNaN(zuzycie) || cena <= 0 || zuzycie <= 0) {
+      alert("Proszę wypełnić oba pola poprawnymi, dodatnimi liczbami.");
+      return;
+    }
+
+    const miesieczneOszczednosci = cena * zuzycie;
+    const roczneOszczednosci = miesieczneOszczednosci * 12;
+    const roczneZuzycieM3 = zuzycie * 12;
+    const roczneZuzycieLitry = roczneZuzycieM3 * 1000;
+    const iloscWann = Math.round(roczneZuzycieLitry / 150);
+
+    wynikMiesiacEl.textContent = `${miesieczneOszczednosci.toFixed(2)} zł`;
+    wynikRokEl.textContent = `${roczneOszczednosci.toFixed(2)} zł`;
+
+    // Używamy nowej funkcji do wygenerowania ciekawostki
+    const ciekawostka = getCiekawostkaWodna(roczneZuzycieLitry);
+    wynikWodaEl.innerHTML = `
+      Rocznie zużywasz <strong>${roczneZuzycieM3.toFixed(0)} m³</strong> (${roczneZuzycieLitry.toLocaleString("pl-PL")} litrów) wody. 
+      To tyle, ile mieści się w około <strong>${iloscWann} wannach</strong>! 🛁
+      <br><br>
+      <span class="text-base text-blue-600">${ciekawostka}</span>
+    `;
+
+    let analogiaTekst = "";
+    if (roczneOszczednosci <= 500) {
+      analogiaTekst = "kilkanaście biletów do kina 🍿";
+    } else if (roczneOszczednosci <= 800) {
+      analogiaTekst =
+        "opłacenie rocznej subskrypcji ulubionego serwisu streamingowego 📺";
+    } else if (roczneOszczednosci <= 2000) {
+      analogiaTekst = "dobry ekspres do kawy ☕";
+    } else {
+      analogiaTekst = "nowy smartfon lub weekendowy wyjazd dla dwóch osób 📱";
+    }
+    wynikAnalogiaEl.textContent = `Za taką kwotę mógłbyś co roku kupić np. ${analogiaTekst}.`;
+
+    wynikContainer.classList.remove("hidden");
+
+    wynikContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+</script>
