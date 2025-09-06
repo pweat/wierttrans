@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Realizacje"
+  description="Zobacz galerię naszych dotychczasowych prac. Prezentujemy wybrane realizacje studni głębinowych i instalacji wykonanych dla naszych klientów."
+>
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold text-gray-800 text-center mb-8">
+      Nasze Realizacje
+    </h1>
+    <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+      Jesteśmy dumni z każdej wykonanej studni. Poniżej prezentujemy kilka
+      przykładów naszej pracy, które świadczą o naszym profesjonalizmie i
+      dbałości o detale.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img
+          src="https://via.placeholder.com/400x300.png?text=Miejsce+na+Twoje+zdjęcie"
+          alt="Zdjęcie realizacji 1"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Studnia w Olsztynie</h3>
+          <p class="text-gray-600">
+            Odwiert na głębokość 45 metrów dla domu jednorodzinnego. Zapewniono
+            pełne zapotrzebowanie na wodę użytkową.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img
+          src="https://via.placeholder.com/400x300.png?text=Miejsce+na+Twoje+zdjęcie"
+          alt="Zdjęcie realizacji 2"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Odwierty pod Pompę Ciepła</h3>
+          <p class="text-gray-600">
+            Kompleksowe wykonanie odwiertów pionowych dla systemu ogrzewania
+            opartego na pompie ciepła.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img
+          src="https://via.placeholder.com/400x300.png?text=Miejsce+na+Twoje+zdjęcie"
+          alt="Zdjęcie realizacji 3"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Studnia dla Gospodarstwa</h3>
+          <p class="text-gray-600">
+            Realizacja studni o wysokiej wydajności na potrzeby nawadniania
+            upraw rolnych.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
